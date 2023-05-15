@@ -1,7 +1,7 @@
 class AttendanceMailer < ApplicationMailer
   default from: 'chiron.nic@gmail.com'
 
-  def attendance_email(attendance.attendee)
+  def attendance_email(attendance)
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
     @attendee = attendance.attendee
     #on définit une variable @url qu'on utilisera dans la view d’e-mail
