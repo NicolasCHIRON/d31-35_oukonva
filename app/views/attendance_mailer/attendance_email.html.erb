@@ -4,13 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @attendee.first_name %> tu es bien inscrit à l'évènement !</h1>
+    <h1>Salut <%=@administrator.first_name %> <%=@administrator.last_name %>, un nouveau participant s'est inscrit à ton évènement !</h1>
     <p>
-      Tu t'es inscrit sur oukonva en utilisant l'e-mail suivant : <%= @attendee.email %>.
+    <%= @attendee.first_name %> <%= @attendee.last_name %> (<%= @attendee.email %>) s'est inscrit sur ton évènement.
     </p>
-    <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
-    </p>
-    <p> À très vite sur oukonva !
   </body>
 </html>
