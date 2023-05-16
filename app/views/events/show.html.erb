@@ -1,6 +1,6 @@
 <center>
   </br>
-  <div class="card-body card-border" style="width: 25rem;">
+  <div class="card-body card-border" style="width: 35rem;">
   
     <p> <span style="color: blue;">Il s'agit de l'évènement n° </span><%= params['id'] %> </p>
 
@@ -19,6 +19,8 @@
     <p> <span style="color: blue;">Lieu de l'évènement : </span><%= @event.location %></p>
 
     <p> <span style="color: blue;">Prix : </span><%= @event.price %> euros</p> 
+
+    <%= button_to "S'inscrire", root_path, class:"btn btn-primary m-2", method: :get %>
 
   </div>
 </center>
