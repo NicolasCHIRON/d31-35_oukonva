@@ -12,21 +12,18 @@ class EventsController < ApplicationController
   end
 
   def create
-    puts params
-    puts "*"*60
-    puts current_user.id
-    @event = Event.new
-      (start_date= DateTime.new(params['event']['start_date(1i)'].to_i,
-                                params['event']['start_date(2i)'].to_i,
-                                params['event']['start_date(3i)'].to_i,
-                                params['event']['start_date(4i)'].to_i,
-                                params['event']['start_date(5i)'].to_i,),
-      duration= params['event']['duration'].to_i, 
-      title= params['event']['title'], 
-      description= params['event']['description'],
-      location= params['event']['location'],
-      price= params['event']['price'].to_i,
-      administrator_id= current_user.id)
+    date_time = DateTime.new(params['event']['start_date(1i)'].to_i,
+                            params['event']['start_date(2i)'].to_i,
+                            params['event']['start_date(3i)'].to_i,
+                            params['event']['start_date(4i)'].to_i,
+                            params['event']['start_date(5i)'].to_i)
+    @event = Event.new(start_date: date_time,
+      duration: params['event']['duration'].to_i, 
+      title: params['event']['title'], 
+      description: params['event']['description'],
+      location: params['event']['location'],
+      administrator_id: current_user.id,
+      price: params['event']['price'].to_i)
     if @event.save
       flash[:notice] = "L'évènement a bien été créé !"
       redirect_to '/'
