@@ -4,10 +4,10 @@ Attendance.destroy_all
 
 
 # Création des utilisateurs
-4.times do
+2.times do
   User.create(
     email: Faker::Internet.email(domain: "yopmail.com"),
-    encrypted_password: Faker::Internet.password,
+    password: Faker::Internet.password,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Lorem.paragraph
@@ -16,7 +16,7 @@ end
 
 puts 'Utilisateurs créés avec succès.'
 
-# Création des événements
+# # Création des événements
 2.times do
   Event.create(
     start_date: Faker::Time.between_dates(from: Date.today, to: Date.today + 30),
