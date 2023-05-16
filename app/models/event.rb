@@ -12,7 +12,7 @@ class Event < ApplicationRecord
   validates :location, presence:true
 
   def duration_is_multiple_of_5
-    if duration%5 != 0
+    if duration.present? && duration % 5 != 0
       errors.add(:duration, "La durée de l'évènement doit être un multiple de 5.")
     end
   end

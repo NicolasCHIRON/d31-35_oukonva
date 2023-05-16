@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_administrator
 
   def show
-    @user = User.find(params['format'])
+    @user = User.find(params['id'])
   end
 
   private
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def authenticate_administrator
-    unless current_user == User.find(params['format'])
+    unless current_user == User.find(params['id'])
       flash[:alert] = "Vous ne pouvez accéder qu'à votre profil"
       redirect_to root_path
     end
