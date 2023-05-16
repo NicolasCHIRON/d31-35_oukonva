@@ -30,6 +30,7 @@ gem "jbuilder"
 gem "faker"
 gem "table_print"
 gem "dotenv-rails"
+gem "devise"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
