@@ -1,17 +1,24 @@
-<p> Il s'agit de l'évènement n° <%= params['id'] %> </p>
+<center>
+  </br>
+  <div class="card-body card-border" style="width: 25rem;">
+  
+    <p> <span style="color: blue;">Il s'agit de l'évènement n° </span><%= params['id'] %> </p>
 
-<p> Titre : <%= @event.title %></p>
+    <p> <span style="color: blue;">Titre : </span><%= @event.title %></p>
 
-<p> Description : <%= @event.description %></p>
+    <p> <span style="color: blue;">Description : </span><%= @event.description %></p>
 
-<p> Nombre d'inscrit : <%= @event.attendees.count %></p>
+    <p> <span style="color: blue;">Nombre d'inscrit : </span><%= @event.attendees.count %></p>
 
-<p> Créateur de l'évènement : <%= @event.administrator.email %></p>
+    <p> <span style="color: blue;">Créateur de l'évènement : </span><%= @event.administrator.email %></p>
 
-<p> Date de début de l'évènement : <%= @event.start_date %></p>
+    <p> <span style="color: blue;">Date de début de l'évènement : </span><%= @event.start_date %></p>
 
-<p> Date de fin de l'évènement : <%= @event.end_date %></p>
+    <p> <span style="color: blue;">Date de fin de l'évènement : </span><%= @event.end_date %></p>
 
-<p> Lieu de l'évènement : <%= @event.location %></p>
+    <p> <span style="color: blue;">Lieu de l'évènement : </span><%= @event.location %></p>
 
-<p> Prix : <%= @event.price %> euros</p> 
+    <p> <span style="color: blue;">Prix : </span><%= @event.price %> euros</p> 
+
+  </div>
+</center>

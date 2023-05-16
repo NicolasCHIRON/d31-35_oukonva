@@ -15,7 +15,7 @@
   </head>
 
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg" style="background-color: #5e808f;">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Oukonva</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,10 +30,11 @@
               <%= link_to "Créer un évènement", new_event_path, class:"nav-link" %>
             </li>
           </ul>
-          <!-- Si aucun utilisateur n'est connecté, les options s'inscrire et se connecter apparaissent -->
-          <div class="navbar-nav">
+        </div>
+        <!-- Si aucun utilisateur n'est connecté, les options s'inscrire et se connecter apparaissent -->
+        <div class="navbar-nav justify-content-end">
           <% if current_user == nil %>
-            <li class="nav-item dropdown">
+            <div class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               S'inscrire / Se connecter
               </a>
@@ -41,10 +42,10 @@
                 <%= link_to "S'inscrire", new_user_registration_path, class:"dropdown-item" %>
                 <%= link_to "Se connecter", new_user_session_path, class:"dropdown-item" %>
               </ul>
-            </li>
+            </div>
           <!-- Sinon, l'option mon profil apparaît --> 
           <% else %>
-            <li class="nav-item dropdown">
+            <div class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Mon profil (<%= current_user.first_name%> <%= current_user.last_name%>)
               </a>
@@ -52,14 +53,14 @@
                 <%= link_to "Mon profil", user_path(current_user), class:"dropdown-item" %>
                 <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
               </ul>
-            </li>
+            </div>
           </div>
           <% end %>
         </div>
       </div>
     </nav>
   </header>
-  <body>
+  <body class="body_css">
     <!-- Pour l'affichage des notices et des alertes -->
     <% if notice %>
       <div class="alert alert-info alert-dismissible fade show m-1" role="alert">

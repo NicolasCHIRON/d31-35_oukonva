@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+ .body_css {
+  background-color: #a6c8d6;
+  height: 100vh;
+ }
+
+ h1, h2, p, div {
+  text-align: center;
+ }
+
+ .card-spec {
+  border-radius: 35px;
+ }
+
+ .section_our_solution .row {
+  align-items: center;
+  justify-items: center;
+ }
+
+ .card-border {
+  border: .2rem solid black ;
+  border-radius: 15px;
+ }

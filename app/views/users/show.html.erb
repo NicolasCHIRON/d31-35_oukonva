@@ -1,17 +1,41 @@
-<p>Profil utilisateur n°<%= params['id']%> </p>
+<center>
+  </br>
+  <div class="card-body card-border" style="width: 25rem;">
 
-<p> Prénom : <%= @user.first_name %></p>
+    <p style="color: blue;">Profil utilisateur n°<%= params['id']%> </p>
 
-<p> Nom de famille : <%= @user.last_name %></p>
+    <p> <span style="color: blue;"> Prénom : </span><%= @user.first_name %></p>
 
-<p> Description : <%= @user.description %></p>
+    <p> <span style="color: blue;">Nom de famille : </span><%= @user.last_name %></p>
 
-<p> Email : <%= @user.email %></p>
+    <p> <span style="color: blue;">Description : </span><%= @user.description %></p>
 
-<p> Voici les évènements que vous avez créez : </p>
+    <p> <span style="color: blue;">Email : </span><%= @user.email %></p>
 
-<% @user.events.each do |event| %>
-  <%= event.title %> : <%= link_to "Voir l'évènement", event_path(event) %> </br>
-<% end %>
+  </div>
 
-<%= link_to "Editer le mot de passe et / ou l'adresse mail", edit_user_registration_path(current_user) %>
+  </br></br><%= button_to "Editer le mot de passe et / ou l'adresse mail", edit_user_registration_path(current_user), class:"btn btn-primary" %>
+  
+</center>
+  
+ 
+
+  </br><p> Voici les évènements que vous avez créez : </p>
+
+  <div class="section_our_solution justify-content-center align-content-center">
+    <div class="row">
+      <% @user.events.each do |event| %>
+        <div class="col-lg-3 col-md-3 col-sm-3 card card-spec m-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <h6 class="card-subtitle mb-2 card-text"><%= event.description %></h6>
+            <p class="text-muted">Date : <%= event.start_date %></br>
+            Nombre d'inscrit : <%= event.attendees.count %></br>
+            Tarif : <%= event.price %> euros </br>
+            Hôte : <%= event.administrator.first_name %> <%= event.administrator.last_name %></p>
+            <%= button_to "Détails de l'évènement", event_path(event), class:"btn btn-dark m-2",method: :get %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
