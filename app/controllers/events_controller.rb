@@ -3,10 +3,12 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  def new
+  def show
+    @event = Event.find(params['id'])
   end
 
-  def show
+  def new
+    @event = Event.new
   end
 
 end

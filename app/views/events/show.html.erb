@@ -1,0 +1,17 @@
+<p> Il s'agit de l'évènement n° <%= params['id'] %> </p>
+
+<p> Titre : <%= @event.title %></p>
+
+<p> Description : <%= @event.description %></p>
+
+<p> Nombre d'inscrit : <%= @event.attendees.count %></p>
+
+<p> Créateur de l'évènement : <%= @event.administrator.email %></p>
+
+<p> Date de début de l'évènement : <%= @event.start_date %></p>
+
+<p> Date de fin de l'évènement : <%= @event.end_date %></p>
+
+<p> Lieu de l'évènement : <%= @event.location %></p>
+
+<p> Prix : <%= @event.price %> euros</p> 

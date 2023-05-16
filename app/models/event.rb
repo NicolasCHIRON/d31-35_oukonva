@@ -22,4 +22,8 @@ class Event < ApplicationRecord
       !start_date.blank? and start_date < Date.today
   end
 
+  def end_date
+    return (start_date + duration * 60)
+  end
+
 end

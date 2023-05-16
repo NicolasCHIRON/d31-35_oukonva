@@ -1,0 +1,17 @@
+<p>Profil utilisateur n°<%= params['format']%> </p>
+
+<p> Prénom : <%= @user.first_name %></p>
+
+<p> Nom de famille : <%= @user.last_name %></p>
+
+<p> Description : <%= @user.description %></p>
+
+<p> Email : <%= @user.email %></p>
+
+<p> Voici les évènements que vous avez créez : </p>
+
+<% @user.events.each do |event| %>
+  <%= event.title %> : <%= link_to "Voir l'évènement", event_path(event) %> </br>
+<% end %>
+
+<%= link_to "Editer le mot de passe et / ou l'adresse mail", edit_user_registration_path(current_user) %>

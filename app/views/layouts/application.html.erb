@@ -49,7 +49,7 @@
               Mon profil (<%= current_user.first_name%> <%= current_user.last_name%>)
               </a>
               <ul class="dropdown-menu">
-                <%= link_to "Mon profil", root_path, class:"dropdown-item" %>
+                <%= link_to "Mon profil", users_show_path(current_user), class:"dropdown-item" %>
                 <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item",form: { data: { turbo_confirm: "Veux-tu te déconnecter ?" } }, method: :delete %>
               </ul>
             </li>

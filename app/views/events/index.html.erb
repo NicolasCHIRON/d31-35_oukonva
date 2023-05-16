@@ -3,5 +3,9 @@
 
 
 <% @events.each.with_index do |event, index| %>
-<%= index +1 %> <%= event.title %> créé par <%= event.administrator.first_name %> <%= event.administrator.last_name %></br>
+<%= index + 1 %> <%= event.title %> créé par <%= event.administrator.first_name %> <%= event.administrator.last_name %>. <%= link_to "Voir l'évènement", event_path(event) %></br>
 <% end %>
+
+
+<p> Créer un évènement : </p>
+<%= link_to "Nouvel évènement", new_event_path %>
