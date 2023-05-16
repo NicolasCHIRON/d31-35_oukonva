@@ -4,7 +4,7 @@ Attendance.destroy_all
 
 
 # Création des utilisateurs
-2.times do
+1.times do
   User.create(
     email: Faker::Internet.email(domain: "yopmail.com"),
     password: Faker::Internet.password,
@@ -32,7 +32,7 @@ end
 puts 'Événements créés avec succès.'
 
 # Création des participations
-2.times do
+1.times do
   Attendance.create(stripe_customer_id: Faker::Alphanumeric.alphanumeric(number: 10), attendee_id: User.all.sample.id, event_id: Event.all.sample.id)
 end
 
