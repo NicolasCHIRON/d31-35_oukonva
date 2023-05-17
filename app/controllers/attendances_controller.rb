@@ -6,7 +6,5 @@ class AttendancesController < ApplicationController
 
   def index
     @event = Event.find(params['event_id'])
-    puts "$"*60
-    puts @event.attendees
   end
 end

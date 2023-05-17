@@ -40,15 +40,28 @@ class EventsController < ApplicationController
   end
 
   def edit
-
+    @event = Event.find(params['id'])
+    puts params
+    puts "&" * 60
   end
 
   def update
+    @event = Event.find(params['id'])
+      if @event.update(params.require(:event).permit(:start_date, :duration, :title, :description, :location, :price))
+        flash[:notice] = "Votre évènement a bien été mis à jour !"
+        redirect_to @event
+      else
+        flash[:alert] = @event.errors.full.messages[0]
+        render 'edit'
+      end
 
   end
 
   def destroy
-
+    @event = Event.find(params['id'])
+    @event.destroy
+    flash[:notice] = "L'évènement a été supprimé"
+    redirect_to root_path
   end
 
 end
