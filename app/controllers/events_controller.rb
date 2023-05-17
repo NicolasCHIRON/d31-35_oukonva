@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :show]
+  before_action :authenticate_administrator, only: [:edit, :update, :destroy]
+
   def index
     @events = Event.all
   end
@@ -41,8 +44,6 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params['id'])
-    puts params
-    puts "&" * 60
   end
 
   def update
@@ -62,6 +63,22 @@ class EventsController < ApplicationController
     @event.destroy
     flash[:notice] = "L'évènement a été supprimé"
     redirect_to root_path
+  end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:alert] = "Merci de vous connecter pour gérer vos évènements."
+      redirect_to new_user_session_path
+    end
+  end
+
+  def authenticate_administrator
+    unless current_user == Event.find(params['id']).administrator
+      flash[:alert] = "Vous ne pouvez modifier que vos évènements"
+      redirect_to root_path
+    end
   end
 
 end
