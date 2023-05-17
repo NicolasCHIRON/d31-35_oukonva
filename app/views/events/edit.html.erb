@@ -39,5 +39,6 @@
     </div>
 
   <% end %>
+  <%= button_to "Supprimer l'évènement", event_path, form: { data: { turbo_confirm: "Veux-tu supprimer cet évènement (et rendre des gens malheureux...) ?" } }, class:"btn btn-danger m-3", style:"display: inline;", method: :delete %>
 </div>
 </center>
