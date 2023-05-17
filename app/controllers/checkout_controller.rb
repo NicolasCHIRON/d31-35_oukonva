@@ -1,8 +1,9 @@
 class CheckoutController < ApplicationController
 
+  @@event = Event.new
+
   def create
-    @event = Event.find(params['event_id'])
-    @user = User.find(params['user_id'])
+    @@event = Event.find(params['event_id'])
     @total = params[:total].to_d
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -24,15 +25,12 @@ class CheckoutController < ApplicationController
     )
     redirect_to @session.url, allow_other_host: true
 
-    # if success
-    #   Attendance.create!(stripe_customer_id: "blabla", attendee_id: user_id, event_id: event_id)
-    # end
   end
 
   def success
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
-
+    Attendance.create!(stripe_customer_id: params[:session_id], attendee_id: current_user.id, event_id: @@event.id)
   end
 
   # A changer si besoin
