@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'attendances/new'
+  get 'attendances/index'
   devise_for :users
 
   resources :events, only: [:index, :new, :show, :create]

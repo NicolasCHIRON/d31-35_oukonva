@@ -1,5 +1,5 @@
 class CheckoutController < ApplicationController
-
+@@event = Event.new
   def create
     @total = params[:total].to_d
     @session = Stripe::Checkout::Session.create(
@@ -26,6 +26,7 @@ class CheckoutController < ApplicationController
   def success
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+    
   end
 
   # A changer si besoin

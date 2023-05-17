@@ -15,7 +15,6 @@
             Nombre d'inscrit : <%= event.attendees.count %></br>
             Tarif : <%= event.price %> euros </br>
             Hôte : <%= event.administrator.first_name %> <%= event.administrator.last_name %></p>
-            <%= button_to "S'inscrire", root_path, class:"btn btn-primary m-2", method: :get %>
             <%= button_to "Détails de l'évènement", event_path(event), class:"btn btn-dark m-2",method: :get %>
           </div>
         </div>

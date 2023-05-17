@@ -20,7 +20,22 @@
 
     <p> <span style="color: blue;">Prix : </span><%= @event.price %> euros</p> 
 
-    <%= button_to "S'inscrire", root_path, class:"btn btn-primary m-2", method: :get %>
+    <% if current_user == nil %>
+    <p class= "text-danger"> Connecte-toi pour me donner de l'argent !</p>
+
+    <% elsif current_user && current_user.id == @event.administrator.id %>
+    <p class= "text-primary"> Vous êtes le créateur de l'évènement !</p>
+
+    <% elsif current_user && current_user != @event.administrator_id && @registered == false %>
+    <%= button_to "S'inscrire à l'évènement", checkout_create_path(total: @event.price), class: "btn btn-primary m-3", data: {turbo: false} %>
+
+    <% elsif current_user && current_user != @event.administrator_id && @registered == true %>
+    <p class= "text-danger"> Connecte-toi pour me donner de l'argent !</p>
+
+    <% else %>
+    <p class= "text-primary"> Vous êtes déjà inscrit à l'évènement !</p>
+
+    <% end %>
 
   </div>
 </center>

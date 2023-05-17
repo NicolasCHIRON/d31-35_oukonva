@@ -5,6 +5,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params['id'])
+    if @event.attendances.count > 0 && @event.attendances.find_by(attendee_id: current_user)
+      @registered = true
+    else
+      @registered = false
+    end
+
   end
 
   def new

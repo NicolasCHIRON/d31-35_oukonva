@@ -2,4 +2,6 @@
   <h1>Succès</h1>
   <p>Nous avons bien reçu votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p>
   <p>Le statut de votre paiement est : <%= @payment_intent.status %>.</p> 
+
+  <%= button_to "Revenir à l'accueil", root_path, class:"btn btn-primary m-2", method: :get %>
 </div>
