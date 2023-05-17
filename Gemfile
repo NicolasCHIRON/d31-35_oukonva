@@ -31,6 +31,7 @@ gem "faker"
 gem "table_print"
 gem "dotenv-rails"
 gem "devise"
+gem "stripe"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
