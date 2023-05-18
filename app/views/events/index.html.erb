@@ -6,7 +6,7 @@
   <div class="section_our_solution justify-content-center align-content-center">
     <div class="row">
 
-      <% @events.each.with_index do |event, index| %>
+      <% @events.reverse_each.with_index do |event, index| %>
         <div class="col-lg-3 col-md-3 col-sm-3 card card-spec m-3" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title"><%= event.title %></h5>
@@ -15,6 +15,9 @@
             Nombre d'inscrit : <%= event.attendees.count %></br>
             Tarif : <%= event.price %> euros </br>
             Hôte : <%= event.administrator.first_name %> <%= event.administrator.last_name %></p>
+            <% if event.event_picture.attached? %>
+            <%= image_tag event.event_picture, width: "80%", style:"border-radius: 10px;" %>
+            <% end %>
             <%= button_to "Détails de l'évènement", event_path(event), class:"btn btn-dark m-2",method: :get %>
           </div>
         </div>

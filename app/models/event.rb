@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_one_attached :event_picture
   has_many :attendances, dependent: :destroy
   has_many :attendees, class_name: "User", through: :attendances
   belongs_to :administrator, class_name: "User"
@@ -10,7 +11,7 @@ class Event < ApplicationRecord
   validates :description, presence:true, length: {in: 20..1000}
   validates :price, presence:true, numericality: {in: 1..1000}
   validates :location, presence:true
-
+ 
   def duration_is_multiple_of_5
     if duration.present? && duration % 5 != 0
       errors.add(:duration, "La durée de l'évènement doit être un multiple de 5.")

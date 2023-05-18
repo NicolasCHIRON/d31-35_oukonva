@@ -25,7 +25,16 @@
 
     <% elsif user_signed_in? && current_user.id == @event.administrator.id %>
     <%= button_to "Mon espace évènement", event_attendances_path(@event), class: "btn btn-success m-3", method: :get %>
-
+      <% if @event.event_picture.attached? %>
+        <%= image_tag @event.event_picture, width: "50%", style:"border-radius: 15px;" %>
+      <% else %>
+        <p>=== Il n'y a pas encore d'image liée à cet évènement ===</p>
+      <% end %>
+      <h3>Changer La photo de l'évènement</h3>
+      <%= form_tag event_event_pictures_path(@event), multipart: true do %>
+        <%= file_field_tag :event_picture %>
+        <%= submit_tag "mettre à jour", class:"btn-pic" %>
+      <% end %>
     <% elsif user_signed_in? && current_user != @event.administrator_id && @registered == false %>
     <%= button_to "S'inscrire à l'évènement", new_event_attendance_path(@event), class: "btn btn-primary m-3", method: :get %>
 
