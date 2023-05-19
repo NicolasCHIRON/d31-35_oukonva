@@ -24,12 +24,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    date_time = DateTime.new(params['event']['start_date(1i)'].to_i,
-                            params['event']['start_date(2i)'].to_i,
-                            params['event']['start_date(3i)'].to_i,
-                            params['event']['start_date(4i)'].to_i,
-                            params['event']['start_date(5i)'].to_i)
-    @event = Event.new(start_date: date_time,
+    @event = Event.new(start_date: params['event']['start_date'],
       duration: params['event']['duration'].to_i, 
       title: params['event']['title'], 
       description: params['event']['description'],
