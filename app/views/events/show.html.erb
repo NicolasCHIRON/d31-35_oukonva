@@ -1,9 +1,7 @@
-<center>
-  </br>
-  <div class="card-body card-border" style="width: 35rem;">
-  
-    <p> <span style="color: blue;">Il s'agit de l'évènement n° </span><%= params['id'] %> </p>
+<h2 class="mt-4"> Détails de l'évènement </h2>
 
+<div class="card mt-4" style="width: 35rem;">
+  <div class="card-body">
     <p> <span style="color: blue;">L'évènement est proposé par : </span><%= @event.administrator.first_name %> <%= @event.administrator.last_name %></p>
 
     <p> <span style="color: blue;">Titre : </span><%= @event.title %></p>
@@ -39,7 +37,7 @@
       <% else %>
         <p>=== Il n'y a pas encore d'image liée à cet évènement ===</p>
       <% end %>
-      <h3>Changer La photo de l'évènement</h3>
+      <h3 class="mb-3">Changer La photo de l'évènement</h3>
       <%= form_tag event_event_pictures_path(@event), multipart: true do %>
         <%= file_field_tag :event_picture %>
         <%= submit_tag "mettre à jour", class:"btn-pic" %>
@@ -51,6 +49,5 @@
     <p class= "text-primary"> Vous êtes déjà inscrit à l'évènement !</p>
 
     <% end %>
-
   </div>
-</center>
+</div>

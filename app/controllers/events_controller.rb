@@ -67,7 +67,7 @@ class EventsController < ApplicationController
 
   def authenticate_user
     unless current_user
-      flash[:alert] = "Merci de vous connecter pour gérer vos évènements."
+      flash[:alert] = "Merci de vous connecter pour voir les évènements."
       redirect_to new_user_session_path
     end
   end
