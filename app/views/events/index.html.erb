@@ -3,7 +3,7 @@
   <p> Tu te poses cette question ? Alors tu es au bon endroit !</p>
   <p> Voici les évènements prévus dans ta ville : </p>
 
-  <div class="card-position row">
+  <div class="card-position row", style="width:100%">
 
     <% @events.reverse_each.with_index do |event, index| %>
       <div class="card card-spec m-3" style="width: 18rem;">
@@ -26,4 +26,4 @@
 
 
 <h2 class="p-4"> Tu veux créer un évènement ? N'hésites pas ! </h2>
-<div><%= button_to "Nouvel évènement", new_event_path, class:"spec_btn", method: :get %></div
+<div><%= button_to "Nouvel évènement", new_event_path, class:"spec_btn mb-5", method: :get %></div

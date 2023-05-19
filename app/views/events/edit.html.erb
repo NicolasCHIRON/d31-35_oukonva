@@ -35,10 +35,24 @@
       </div>
 
       </br><div class="form_group" data-turbo=false>
-        <button type="submit" class="btn btn-primary m-2"> Modifier l'évènement</button>
+        <button type="submit" class="btn btn-primary m-2" form: {style: 'display:inline-block;'}> Modifier l'évènement</button>
       </div>
+     <% end %>
+    <%= button_to "Supprimer l'évènement", event_path, form: { data: { turbo_confirm: "Veux-tu supprimer cet évènement (et rendre des gens malheureux...) ?" }, style: 'display:inline-block;'}, class:"btn btn-danger m-3", style:"display: inline;", method: :delete %>
+    
+    <div>
+    <% if @event.event_picture.attached? %>
+      <%= image_tag @event.event_picture, width: "50%", style:"border-radius: 15px;" %>
+    <% else %>
+        <p>=== Il n'y a pas encore d'image liée à cet évènement ===</p>
+    <% end %>
+    </div>
+      <h3 class="m-3">Changer La photo de l'évènement</h3>
+      <%= form_tag event_event_pictures_path(@event), multipart: true do %>
+        <%= file_field_tag :event_picture %>
+        <%= submit_tag "mettre à jour", class:"btn-pic" %>
+        </br></br>
 
     <% end %>
-    <%= button_to "Supprimer l'évènement", event_path, form: { data: { turbo_confirm: "Veux-tu supprimer cet évènement (et rendre des gens malheureux...) ?" } }, class:"btn btn-danger m-3", style:"display: inline;", method: :delete %>
   </div>
 </div>
