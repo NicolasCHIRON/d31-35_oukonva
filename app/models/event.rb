@@ -27,4 +27,22 @@ class Event < ApplicationRecord
     return (start_date + duration * 60)
   end
 
+  def is_validate
+    if validated
+      return true
+    end
+  end
+
+  def need_validation
+    if validated == nil
+      return true
+    end
+  end
+
+  def denied
+    if !validated
+      return true
+    end
+  end
+
 end

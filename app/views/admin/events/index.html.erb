@@ -1,0 +1,6 @@
+<p> Evènement à gérer</p>
+
+<% @events.each do |event| %>
+</br><%= event.title %>
+<%= button_to "Voir l'évènement", admin_event_path(event), method: :get %>
+<% end %>

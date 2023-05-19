@@ -140,6 +140,10 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.14.4-x86_64-linux)
       racc (~> 1.4)
+    open-uri (0.3.0)
+      stringio
+      time
+      uri
     orm_adapter (0.5.0)
     pg (1.5.3)
     public_suffix (5.0.1)
@@ -197,9 +201,12 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    stringio (3.0.6)
     stripe (8.5.0)
     table_print (1.5.7)
     thor (1.2.2)
+    time (0.2.2)
+      date
     timeout (0.3.2)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
@@ -207,6 +214,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uri (0.12.1)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -238,6 +246,7 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
+  open-uri
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
@@ -248,6 +257,7 @@ DEPENDENCIES
   table_print
   turbo-rails
   tzinfo-data
+  uri
   web-console
   webdrivers
 

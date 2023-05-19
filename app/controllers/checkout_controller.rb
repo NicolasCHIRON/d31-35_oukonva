@@ -28,8 +28,6 @@ class CheckoutController < ApplicationController
   end
 
   def success
-    puts params
-    puts "&"*60
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     # Récupérer l'ID de l'évènement depuis la session

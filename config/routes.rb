@@ -6,9 +6,16 @@ Rails.application.routes.draw do
   resources :events do
     resources :attendances
     resources :event_pictures, only: [:create]
+    patch :update_true, on: :member
+    patch :update_false, on: :member
   end
 
   root to: 'events#index'
+
+  namespace :admin do
+      root to: 'users#index'
+      resources :users, :events, :attendances
+  end
 
   scope '/checkout' do
     post 'create', to: 'checkout#create', as: 'checkout_create'

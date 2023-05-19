@@ -1,0 +1,30 @@
+<h1> Je suis admin </h1>
+
+
+
+<p> Voici la liste des utilisateurs </p>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Email</th>
+      <th>Rôle</th>
+      <th>Suppression</th>
+    </tr>
+  </thead>
+<% @users.each do |user| %>
+  <tbody>
+  <th><%= user.first_name %></th>
+  <th><%= user.last_name %></th>
+  <th><%= user.email %></th>
+  <th><% if user.is_admin %> Admin <% else %> Membre <% end %></th>
+  <th><%= button_to "Supprimer", admin_user_path(user), class:'btn btn-danger', form: { data: { turbo_confirm: "Es-tu sur de vouloir supprimer cet utilisateur ?" } }, method: :delete %></th>
+  </tbody>
+<% end %>
+</table>
+
+<%= button_to "Gérer les évènements", admin_events_path, method: :get, class:'btn btn-primary m-3', data: { turbo: "false" } %>

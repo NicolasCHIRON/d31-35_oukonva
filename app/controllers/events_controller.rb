@@ -1,9 +1,12 @@
 class EventsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user, only: [:new, :create, :show]
   before_action :authenticate_administrator, only: [:edit, :update, :destroy]
+  before_action :check_if_admin, only: [:update_true, :update_false]
 
   def index
-    @events = Event.all
+    # Ne montrer que les évènements validés
+    @events = Event.all.where(validated: true)
   end
 
   def show
@@ -33,7 +36,8 @@ class EventsController < ApplicationController
       location: params['event']['location'],
       administrator_id: current_user.id,
       price: params['event']['price'].to_i)
-    if @event.save
+    if @event.save && params[:event][:event_picture]
+      @event.event_picture.attach(params[:event][:event_picture])
       flash[:notice] = "L'évènement a bien été créé !"
       redirect_to '/'
     else
@@ -55,7 +59,6 @@ class EventsController < ApplicationController
         flash[:alert] = @event.errors.full.messages[0]
         render 'edit'
       end
-
   end
 
   def destroy
