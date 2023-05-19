@@ -3,28 +3,27 @@
   <p> Tu te poses cette question ? Alors tu es au bon endroit !</p>
   <p> Voici les évènements prévus dans ta ville : </p>
 
-  <div class="section_our_solution justify-content-center align-content-center">
-    <div class="row">
+  <div class="card-position row">
 
-      <% @events.reverse_each.with_index do |event, index| %>
-        <div class="col-lg-3 col-md-3 col-sm-3 card card-spec m-3" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title"><%= event.title %></h5>
-            <h6 class="card-subtitle mb-2 card-text"><%= event.description %></h6>
-            <p class="text-muted">Date : <%= event.start_date %></br>
-            Nombre d'inscrit : <%= event.attendees.count %></br>
-            Tarif : <%= event.price %> euros </br>
-            Hôte : <%= event.administrator.first_name %> <%= event.administrator.last_name %></p>
-            <% if event.event_picture.attached? %>
-            <%= image_tag event.event_picture, width: "80%", style:"border-radius: 10px;" %>
-            <% end %>
-            <%= button_to "Détails de l'évènement", event_path(event), class:"btn btn-dark m-2",method: :get %>
-          </div>
+    <% @events.reverse_each.with_index do |event, index| %>
+      <div class="col-lg-3 col-md-3 col-sm-3 card card-spec m-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <h6 class="card-subtitle mb-2 card-text"><%= event.description %></h6>
+          <p class="text-muted">Date : <%= event.start_date.strftime("%d %B %Y, %H:%M") %></br>
+          Nombre d'inscrit : <%= event.attendees.count %></br>
+          Tarif : <%= event.price %> euros </br>
+          Hôte : <%= event.administrator.first_name %> <%= event.administrator.last_name %></p>
+          <% if event.event_picture.attached? %>
+          <%= image_tag event.event_picture, width: "80%", style:"border-radius: 10px;" %>
+          <% end %>
+          <%= button_to "Détails de l'évènement", event_path(event), class:"btn btn-dark mt-4 m-2",method: :get %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 
 
-<h2> Tu veux créer un évènement ? N'hésites pas ! </h2>
-<div><%= button_to "Nouvel évènement", new_event_path, class:"btn btn-primary btn-ouk", method: :get %></div
+
+<h2 class="p-4"> Tu veux créer un évènement ? N'hésites pas ! </h2>
+<div><%= button_to "Nouvel évènement", new_event_path, class:"spec_btn", method: :get %></div

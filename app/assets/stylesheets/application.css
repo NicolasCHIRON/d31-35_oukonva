@@ -24,9 +24,34 @@
   text-align: center;
  }
 
+ .card {
+  margin: auto;
+  border-radius: 15px ;
+  background: rgb(5,204,154);
+  background: linear-gradient(90deg, rgba(5,204,154,0.3449754901960784) 1%, rgba(109,186,208,1) 100%, rgba(0,212,255,1) 100%);
+ }
+
+.card-position {
+  display: flex;
+  justify-content: space-between;
+}
+
+
  .card-spec {
   border-radius: 35px;
  }
+
+.spec_btn {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  position: relative;
+  border-radius: 15px;
+  background: linear-gradient(to right, #00FFA3, #1fff6a);
+  cursor: pointer;
+  font-size:140% ;
+}
+
 
  .section_our_solution .row {
   align-items: center;

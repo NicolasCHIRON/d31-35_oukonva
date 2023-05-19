@@ -22,7 +22,7 @@ class Admin::EventsController < ApplicationController
       puts "**" * 60
       @event.update(validated:true)
       flash[:notice] = "L'évènement a été accepté !"
-      redirect_to event_path
+      redirect_to admin_events_path
       
     else params['event'] == "false"
       puts "**" * 60
@@ -30,7 +30,7 @@ class Admin::EventsController < ApplicationController
       puts "**" * 60
       @event.update(validated:false)
       flash[:notice] = "L'évènement a été refusé !"
-      redirect_to event_path
+      redirect_to admin_events_path
     end
 
   end

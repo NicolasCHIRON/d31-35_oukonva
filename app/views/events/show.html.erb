@@ -4,6 +4,8 @@
   
     <p> <span style="color: blue;">Il s'agit de l'évènement n° </span><%= params['id'] %> </p>
 
+    <p> <span style="color: blue;">L'évènement est proposé par : </span><%= @event.administrator.first_name %> <%= @event.administrator.last_name %></p>
+
     <p> <span style="color: blue;">Titre : </span><%= @event.title %></p>
 
     <p> <span style="color: blue;">Description : </span><%= @event.description %></p>
@@ -12,21 +14,28 @@
 
     <p> <span style="color: blue;">Créateur de l'évènement : </span><%= @event.administrator.email %></p>
 
-    <p> <span style="color: blue;">Date de début de l'évènement : </span><%= @event.start_date %></p>
+    <p> <span style="color: blue;">Date de début de l'évènement : </span><%= @event.start_date.strftime("%d %B %Y, %H:%M") %></p>
 
-    <p> <span style="color: blue;">Date de fin de l'évènement : </span><%= @event.end_date %></p>
+    <p> <span style="color: blue;">Date de fin de l'évènement : </span><%= @event.end_date.strftime("%d %B %Y, %H:%M") %></p>
 
     <p> <span style="color: blue;">Lieu de l'évènement : </span><%= @event.location %></p>
 
     <p> <span style="color: blue;">Prix : </span><%= @event.price %> euros</p> 
+
+    <% if @event.event_picture.attached? %>
+        <%= image_tag @event.event_picture, width: "50%", style:"border-radius: 15px;" %>
+    <% end %>
+
+    <!-- Affichage en fonction du statut de l'utilisateur connecté -->
 
     <% if user_signed_in? == false %>
     <p class= "text-danger"> Connecte-toi pour me donner de l'argent !</p>
 
     <% elsif user_signed_in? && current_user.id == @event.administrator.id %>
     <%= button_to "Mon espace évènement", event_attendances_path(@event), class: "btn btn-success m-3", method: :get %>
+
       <% if @event.event_picture.attached? %>
-        <%= image_tag @event.event_picture, width: "50%", style:"border-radius: 15px;" %>
+      <!-- Rien à indiquer, la photo est affichée plus haut. -->
       <% else %>
         <p>=== Il n'y a pas encore d'image liée à cet évènement ===</p>
       <% end %>

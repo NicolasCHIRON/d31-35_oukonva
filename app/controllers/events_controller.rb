@@ -36,13 +36,13 @@ class EventsController < ApplicationController
       location: params['event']['location'],
       administrator_id: current_user.id,
       price: params['event']['price'].to_i)
-    if @event.save && params[:event][:event_picture]
+    if (@event.save && params[:event][:event_picture])
       @event.event_picture.attach(params[:event][:event_picture])
       flash[:notice] = "L'évènement a bien été créé !"
       redirect_to '/'
     else
-      flash[:alert] = @event.errors.full_messages[0]
-      render new_event_path
+      flash[:alert] = "Erreur lors de la création de l'évènement."
+      redirect_back(fallback_location: root_path)
     end
   end
 
