@@ -43,14 +43,6 @@
   margin: 0 auto; 
 }
 
-input::file-selector-button {
-  background-color :green;
-  border-radius: 5px;
-  border:none;
-  color:white;
-  padding:5px 15px
-}
-
 .spec_btn {
   padding: 10px 30px;
   border: none;
@@ -61,24 +53,24 @@ input::file-selector-button {
   font-size:140% ;
 }
 
-
- .section_our_solution .row {
+.section_our_solution .row {
   align-items: center;
   justify-items: center;
- }
+}
 
- .card-border {
+.card-border {
   border: .2rem solid black ;
   border-radius: 15px;
- }
+}
 
  
- .btn-pic {
+input::file-selector-button, .btn-pic {
   background-color :green;
   border-radius: 5px;
   border:none;
   color:white;
-  padding:5px 15px
+  padding:5px 15px;
+  cursor: pointer;
 }
 
 
